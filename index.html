@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f5ef">
+  <meta name="description" content="歴史ある庭園から江戸川の夕景まで。千葉県松戸市の、ちょうどいい街の楽しみ方を見つけるガイド。">
+  <title>まつど日和 | 松戸のまち歩きガイド</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Shippori+Mincho:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #f6f5ef;
+      --ink: #20332d;
+      --muted: #68746d;
+      --green: #355c48;
+      --lime: #d7e36a;
+      --coral: #e78369;
+      --line: #d8ddd3;
+      --serif: "Shippori Mincho", "Yu Mincho", serif;
+      --sans: "DM Sans", "Yu Gothic", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--sans); }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+    .wrap { width: min(1180px, calc(100% - 64px)); margin-inline: auto; }
+    .eyebrow { color: var(--green); font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; }
+
+    .topbar { height: 74px; display: flex; align-items: center; border-bottom: 1px solid var(--line); }
+    .nav { display: flex; align-items: center; justify-content: space-between; gap: 30px; }
+    .brand { display: inline-flex; align-items: center; gap: 10px; font-family: var(--serif); font-size: 20px; font-weight: 700; white-space: nowrap; }
+    .brand-mark { width: 30px; height: 30px; display: grid; place-items: center; border-radius: 50%; background: var(--lime); color: var(--green); font-family: var(--sans); font-size: 14px; }
+    .nav-links { display: flex; align-items: center; gap: 31px; color: #48584f; font-size: 12px; font-weight: 600; }
+    .nav-links a:hover { color: var(--coral); }
+    .nav-cta { padding: 11px 16px; border: 1px solid var(--green); border-radius: 2px; font-size: 11px; font-weight: 700; }
+
+    .hero { position: relative; min-height: 580px; display: flex; align-items: center; overflow: hidden; background: #d8e0d1; }
+    .hero-image { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 54%; }
+    .hero-shade { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(20, 42, 34, .78) 0%, rgba(20, 42, 34, .53) 43%, rgba(20, 42, 34, .05) 100%); }
+    .hero-content { position: relative; z-index: 1; width: min(1180px, calc(100% - 64px)); margin: 0 auto; padding: 78px 0 90px; color: white; }
+    .hero .eyebrow { color: #e4ecad; }
+    h1 { max-width: 700px; margin: 25px 0 18px; font-family: var(--serif); font-size: clamp(42px, 6vw, 76px); font-weight: 500; line-height: 1.34; letter-spacing: 0; }
+    .hero-copy { max-width: 400px; margin: 0; color: rgba(255,255,255,.88); font-family: var(--serif); font-size: 15px; line-height: 2.1; }
+    .hero-actions { display: flex; align-items: center; gap: 23px; margin-top: 34px; }
+    .button-primary { display: inline-flex; align-items: center; gap: 17px; padding: 14px 19px; background: var(--lime); color: var(--ink); font-size: 12px; font-weight: 700; transition: background .2s, transform .2s; }
+    .button-primary:hover { background: white; transform: translateY(-2px); }
+    .text-link { padding-bottom: 4px; border-bottom: 1px solid rgba(255,255,255,.65); font-size: 12px; }
+    .hero-index { position: absolute; right: max(32px, calc((100% - 1180px) / 2)); bottom: 31px; color: white; font-family: var(--serif); font-size: 11px; letter-spacing: 1px; }
+
+    .intro { padding: 84px 0 78px; }
+    .intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+    .intro h2, .section-heading h2 { margin: 13px 0 0; font-family: var(--serif); font-size: clamp(28px, 3.2vw, 42px); font-weight: 500; line-height: 1.6; letter-spacing: 0; }
+    .intro-copy { max-width: 450px; padding-top: 22px; color: var(--muted); font-size: 13px; line-height: 2.2; }
+    .intro-copy p { margin: 0 0 16px; }
+    .intro-note { color: var(--green); font-size: 11px; font-weight: 700; }
+
+    .highlights { padding: 72px 0 84px; background: #e9ede4; }
+    .section-heading { display: flex; align-items: end; justify-content: space-between; gap: 30px; margin-bottom: 34px; }
+    .section-heading h2 { margin-top: 10px; }
+    .section-heading > p { max-width: 290px; margin: 0 0 7px; color: var(--muted); font-size: 12px; line-height: 1.9; }
+    .spot-grid { display: grid; grid-template-columns: 1.18fr 1fr 1fr; gap: 18px; }
+    .spot { min-width: 0; }
+    .spot-photo { position: relative; height: 250px; overflow: hidden; background: #c8d3c7; }
+    .spot-photo img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s cubic-bezier(.2,.7,.2,1); }
+    .spot:hover .spot-photo img { transform: scale(1.04); }
+    .spot:first-child .spot-photo { height: 292px; }
+    .spot-tag { position: absolute; left: 13px; top: 13px; padding: 7px 9px; background: var(--paper); color: var(--green); font-size: 9px; font-weight: 700; letter-spacing: 1px; }
+    .spot-info { display: flex; justify-content: space-between; gap: 12px; padding: 16px 0 0; }
+    .spot h3 { margin: 0 0 6px; font-family: var(--serif); font-size: 19px; font-weight: 600; }
+    .spot p { margin: 0; color: var(--muted); font-size: 11px; line-height: 1.8; }
+    .spot-arrow { padding-top: 3px; color: var(--green); font-size: 20px; }
+
+    .walk { padding: 86px 0 92px; }
+    .walk-layout { display: grid; grid-template-columns: .85fr 1.15fr; gap: 90px; }
+    .walk-heading { position: sticky; top: 28px; align-self: start; }
+    .walk-heading h2 { margin: 13px 0 16px; font-family: var(--serif); font-size: 39px; font-weight: 500; line-height: 1.55; }
+    .walk-heading p { max-width: 320px; color: var(--muted); font-size: 12px; line-height: 2; }
+    .duration { display: inline-flex; align-items: center; gap: 9px; margin-top: 14px; padding: 10px 12px; border: 1px solid var(--line); color: var(--green); font-size: 11px; font-weight: 700; }
+    .timeline { border-top: 1px solid var(--line); }
+    .stop { display: grid; grid-template-columns: 76px 1fr; gap: 22px; padding: 23px 0; border-bottom: 1px solid var(--line); }
+    .stop-time { padding-top: 4px; color: var(--coral); font-family: var(--sans); font-size: 12px; font-weight: 700; }
+    .stop h3 { margin: 0 0 7px; font-family: var(--serif); font-size: 18px; font-weight: 600; }
+    .stop p { max-width: 400px; margin: 0; color: var(--muted); font-size: 11px; line-height: 1.9; }
+
+    .bus { padding: 75px 0 82px; background: #e6eadb; }
+    .bus-layout { display: grid; grid-template-columns: .8fr 1.2fr; gap: 80px; align-items: start; }
+    .bus-intro h2 { margin: 13px 0 15px; font-family: var(--serif); font-size: 35px; font-weight: 500; line-height: 1.55; }
+    .bus-intro p { max-width: 340px; margin: 0; color: var(--muted); font-size: 12px; line-height: 2; }
+    .bus-route-label { display: inline-flex; align-items: center; gap: 9px; margin-top: 21px; color: var(--green); font-size: 10px; font-weight: 700; }
+    .bus-route-label span { display: grid; width: 29px; height: 29px; place-items: center; border: 1px solid #9fae96; border-radius: 50%; font-size: 11px; }
+    .bus-list { border-top: 1px solid #c8d0c0; }
+    .bus-destination { display: flex; justify-content: space-between; align-items: center; gap: 15px; padding: 19px 0; border-bottom: 1px solid #c8d0c0; }
+    .bus-destination small { display: block; margin-bottom: 5px; color: var(--green); font-size: 9px; font-weight: 700; letter-spacing: 1px; }
+    .bus-destination strong { font-family: var(--serif); font-size: 16px; font-weight: 600; }
+    .bus-destination a { flex: 0 0 auto; color: var(--green); font-size: 11px; font-weight: 700; }
+    .bus-note { margin: 13px 0 0; color: var(--muted); font-size: 10px; line-height: 1.8; }
+
+    .flavor { display: grid; grid-template-columns: 1fr 1fr; min-height: 370px; background: var(--green); color: white; }
+    .flavor-image { min-height: 370px; overflow: hidden; }
+    .flavor-image img { width: 100%; height: 100%; object-fit: cover; }
+    .flavor-copy { display: flex; flex-direction: column; justify-content: center; padding: 55px clamp(35px, 8vw, 110px); }
+    .flavor-copy .eyebrow { color: var(--lime); }
+    .flavor-copy h2 { margin: 17px 0 13px; font-family: var(--serif); font-size: 34px; font-weight: 500; line-height: 1.6; }
+    .flavor-copy p { max-width: 380px; margin: 0; color: rgba(255,255,255,.76); font-size: 12px; line-height: 2.1; }
+    .food-list { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 23px; }
+    .food-list span { padding: 8px 11px; border: 1px solid rgba(255,255,255,.3); font-size: 10px; }
+
+    .access { padding: 82px 0 88px; }
+    .access-row { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
+    .access h2 { margin: 12px 0; font-family: var(--serif); font-size: 34px; font-weight: 500; }
+    .access-copy { max-width: 440px; color: var(--muted); font-size: 12px; line-height: 2.1; }
+    .access-stats { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .stat { padding: 21px 16px 21px 0; }
+    .stat + .stat { padding-left: 24px; border-left: 1px solid var(--line); }
+    .stat strong { display: block; color: var(--green); font-family: var(--serif); font-size: 26px; font-weight: 600; }
+    .stat span { color: var(--muted); font-size: 10px; }
+
+    footer { padding: 26px 0; border-top: 1px solid var(--line); }
+    .footer-row { display: flex; justify-content: space-between; align-items: center; gap: 20px; }
+    .footer-row small { color: var(--muted); font-size: 10px; }
+    .back-top { color: var(--green); font-size: 11px; font-weight: 700; }
+
+    @media (max-width: 760px) {
+      .wrap { width: min(100% - 40px, 540px); }
+      .topbar { height: 64px; }
+      .nav-links { display: none; }
+      .nav-cta { padding: 9px 11px; }
+      .hero { min-height: 560px; }
+      .hero-content { width: calc(100% - 40px); padding: 62px 0 78px; }
+      .hero-shade { background: linear-gradient(90deg, rgba(20,42,34,.76), rgba(20,42,34,.31)); }
+      .hero-index { right: 20px; }
+      .intro { padding: 62px 0; }
+      .intro-grid { grid-template-columns: 1fr; gap: 15px; }
+      .intro-copy { padding-top: 0; }
+      .highlights { padding: 58px 0 66px; }
+      .section-heading { display: block; }
+      .section-heading > p { margin-top: 13px; }
+      .spot-grid { grid-template-columns: 1fr 1fr; gap: 26px 14px; }
+      .spot:first-child { grid-column: 1 / -1; }
+      .spot-photo, .spot:first-child .spot-photo { height: 205px; }
+      .spot:first-child .spot-photo { height: 245px; }
+      .spot h3 { font-size: 16px; }
+      .walk { padding: 64px 0; }
+      .walk-layout { grid-template-columns: 1fr; gap: 30px; }
+      .walk-heading { position: static; }
+      .walk-heading h2 { font-size: 33px; }
+      .bus { padding: 58px 0 64px; }
+      .bus-layout { grid-template-columns: 1fr; gap: 29px; }
+      .bus-intro h2 { font-size: 31px; }
+      .flavor { grid-template-columns: 1fr; }
+      .flavor-image { min-height: 260px; height: 260px; }
+      .flavor-copy { padding: 38px 24px 43px; }
+      .flavor-copy h2 { font-size: 29px; }
+      .access { padding: 62px 0; }
+      .access-row { grid-template-columns: 1fr; gap: 28px; }
+      .footer-row { align-items: flex-start; flex-direction: column; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body id="top">
+  <header class="topbar">
+    <nav class="nav wrap" aria-label="メインナビゲーション">
+      <a class="brand" href="#top"><span class="brand-mark" aria-hidden="true">松</span>まつど日和</a>
+      <div class="nav-links">
+        <a href="#spots">まちの見どころ</a>
+        <a href="#walk">さんぽコース</a>
+        <a href="#bus">バスでめぐる</a>
+        <a href="#flavor">松戸のおいしいもの</a>
+      </div>
+      <a class="nav-cta" href="#access">松戸へのアクセス <span aria-hidden="true">↗</span></a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="hero-title">
+      <img class="hero-image" src="https://images.unsplash.com/photo-1522383225653-ed111181a951?auto=format&amp;fit=crop&amp;w=2200&amp;q=85" alt="春の桜が咲く風景">
+      <div class="hero-shade"></div>
+      <div class="hero-content">
+        <span class="eyebrow">CHIBA · MATSUDO CITY</span>
+        <h1 id="hero-title">いつもの隣に、<br>知らない松戸。</h1>
+        <p class="hero-copy">歴史ある庭園を歩いて、川風にひと息。<br>東京のすぐ隣にある、ちょうどいい寄り道。</p>
+        <div class="hero-actions">
+          <a class="button-primary" href="#spots">松戸を見つけに行く <span aria-hidden="true">→</span></a>
+          <a class="text-link" href="#walk">半日さんぽコース</a>
+        </div>
+      </div>
+      <span class="hero-index">35°47′ N &nbsp; 139°54′ E</span>
+    </section>
+
+    <section class="intro wrap" aria-labelledby="intro-title">
+      <div class="intro-grid">
+        <div>
+          <span class="eyebrow">A LITTLE DISCOVERY</span>
+          <h2 id="intro-title">急がない日には、<br>松戸がよく似合う。</h2>
+        </div>
+        <div class="intro-copy">
+          <p>都心から電車で約30分。駅前のにぎわいから少し歩けば、戸定邸の静かな庭や、江戸川の広い空が待っています。</p>
+          <p>歴史も、緑も、おいしい寄り道も。何気ない一日を、少し好きになるまち歩きへ。</p>
+          <span class="intro-note">駅から歩いて出会える、松戸のいいところ。</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="highlights" id="spots" aria-labelledby="spots-title">
+      <div class="wrap">
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">THE CITY, IN THREE SCENES</span>
+            <h2 id="spots-title">松戸で出会う、3つの景色。</h2>
+          </div>
+          <p>静かな歴史の気配から、川辺の開放感まで。気になる場所から歩いてみよう。<br>写真はイメージです。</p>
+        </div>
+        <div class="spot-grid">
+          <article class="spot">
+            <a href="https://www.city.matsudo.chiba.jp/tojo/" target="_blank" rel="noreferrer">
+              <div class="spot-photo">
+                <img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&amp;fit=crop&amp;w=1000&amp;q=80" alt="木造建築と緑に囲まれた小道" loading="lazy">
+                <span class="spot-tag">HISTORY</span>
+              </div>
+              <div class="spot-info"><div><h3>戸定邸と、庭の静けさ</h3><p>明治の面影を残す国指定重要文化財。</p></div><span class="spot-arrow" aria-hidden="true">↗</span></div>
+            </a>
+          </article>
+          <article class="spot">
+            <a href="https://www.city.matsudo.chiba.jp/shisetsu-guide/kouen/mori/" target="_blank" rel="noreferrer">
+              <div class="spot-photo">
+                <img src="https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?auto=format&amp;fit=crop&amp;w=900&amp;q=80" alt="木々の間から光が差し込む緑地" loading="lazy">
+                <span class="spot-tag">GREEN</span>
+              </div>
+              <div class="spot-info"><div><h3>21世紀の森と広場</h3><p>池や森をめぐる、ひろびろ公園時間。</p></div><span class="spot-arrow" aria-hidden="true">↗</span></div>
+            </a>
+          </article>
+          <article class="spot">
+            <a href="https://www.city.matsudo.chiba.jp/" target="_blank" rel="noreferrer">
+              <div class="spot-photo">
+                <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&amp;fit=crop&amp;w=900&amp;q=80" alt="広い空の下に広がる川辺の風景" loading="lazy">
+                <span class="spot-tag">RIVERSIDE</span>
+              </div>
+              <div class="spot-info"><div><h3>江戸川の風に吹かれて</h3><p>空が大きく見える、川沿いの散歩道。</p></div><span class="spot-arrow" aria-hidden="true">↗</span></div>
+            </a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="walk" id="walk" aria-labelledby="walk-title">
+      <div class="wrap walk-layout">
+        <div class="walk-heading">
+          <span class="eyebrow">A HALF-DAY WALK</span>
+          <h2 id="walk-title">駅からはじまる、<br>松戸の半日。</h2>
+          <p>歩いて、眺めて、ひと休み。松戸駅を起点にした、気軽なまち歩きの一例です。</p>
+          <span class="duration"><span aria-hidden="true">◷</span> 約4時間 · 徒歩中心</span>
+        </div>
+        <div class="timeline" aria-label="半日さんぽコース">
+          <article class="stop"><span class="stop-time">10:00</span><div><h3>松戸駅からスタート</h3><p>駅前でコーヒーを片手に、今日の寄り道を決めよう。</p></div></article>
+          <article class="stop"><span class="stop-time">10:30</span><div><h3>戸定邸・戸定が丘歴史公園</h3><p>庭園を歩きながら、松戸に残る明治の時間を感じる。</p></div></article>
+          <article class="stop"><span class="stop-time">12:00</span><div><h3>駅周辺でランチと甘いもの</h3><p>商店街やカフェをのぞいて、お気に入りの一軒を見つける。</p></div></article>
+          <article class="stop"><span class="stop-time">14:00</span><div><h3>江戸川のほとりで深呼吸</h3><p>川沿いまで足をのばして、空の広さを味わって帰ろう。</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="bus" id="bus" aria-labelledby="bus-title">
+      <div class="wrap bus-layout">
+        <div class="bus-intro">
+          <span class="eyebrow">A WINDOW ON MATSUDO</span>
+          <h2 id="bus-title">バスに揺られて、<br>街の続きへ。</h2>
+          <p>車窓から街の景色を眺めるのも、松戸めぐりの楽しみ。松戸駅から行き先までの公共交通ルートを調べて、バスの旅を組み立てよう。</p>
+          <span class="bus-route-label"><span aria-hidden="true">BUS</span> 乗り場から、街の向こうへ</span>
+        </div>
+        <div>
+          <div class="bus-list">
+            <div class="bus-destination">
+              <div><small>GREEN ESCAPE</small><strong>21世紀の森と広場</strong></div>
+              <a href="https://www.google.com/maps/dir/?api=1&amp;origin=%E6%9D%BE%E6%88%B8%E9%A7%85&amp;destination=21%E4%B8%96%E7%B4%80%E3%81%AE%E6%A3%AE%E3%81%A8%E5%BA%83%E5%A0%B4&amp;travelmode=transit" target="_blank" rel="noreferrer">経路を見る ↗</a>
+            </div>
+            <div class="bus-destination">
+              <div><small>RIVERSIDE RIDE</small><strong>矢切の渡し</strong></div>
+              <a href="https://www.google.com/maps/dir/?api=1&amp;origin=%E6%9D%BE%E6%88%B8%E9%A7%85&amp;destination=%E7%9F%A2%E5%88%87%E3%81%AE%E6%B8%A1%E3%81%97&amp;travelmode=transit" target="_blank" rel="noreferrer">経路を見る ↗</a>
+            </div>
+          </div>
+          <p class="bus-note">経路・乗り場・運行状況は日によって異なります。お出かけ前に最新情報をご確認ください。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="flavor" id="flavor" aria-labelledby="flavor-title">
+      <div class="flavor-image">
+        <img src="https://images.unsplash.com/photo-1547514701-42782101795e?auto=format&amp;fit=crop&amp;w=1300&amp;q=85" alt="みずみずしい果物が並ぶ" loading="lazy">
+      </div>
+      <div class="flavor-copy">
+        <span class="eyebrow">TASTE OF MATSUDO</span>
+        <h2 id="flavor-title">このまちの味を、<br>おみやげに。</h2>
+        <p>松戸は「二十世紀梨」発祥の地。旬の果実や矢切ねぎ、地元のお店で見つける季節の味を、まち歩きの楽しみに。</p>
+        <div class="food-list"><span>二十世紀梨</span><span>矢切ねぎ</span><span>地元のカフェ</span></div>
+      </div>
+    </section>
+
+    <section class="access" id="access" aria-labelledby="access-title">
+      <div class="wrap access-row">
+        <div>
+          <span class="eyebrow">EASY TO GET HERE</span>
+          <h2 id="access-title">思い立ったら、松戸へ。</h2>
+          <p class="access-copy">JR常磐線・新京成線が乗り入れる松戸駅。上野・東京方面からもアクセスしやすく、日帰りの寄り道にぴったりです。所要時間は乗車駅や時間帯によって異なります。<br><a href="https://www.google.com/maps/search/?api=1&amp;query=%E6%9D%BE%E6%88%B8%E9%A7%85" target="_blank" rel="noreferrer">松戸駅を地図で見る ↗</a></p>
+        </div>
+        <div class="access-stats" aria-label="松戸駅へのアクセスの目安">
+          <div class="stat"><strong>約20分</strong><span>上野駅から JR常磐線快速</span></div>
+          <div class="stat"><strong>約30分</strong><span>東京駅から JR線利用</span></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-row">
+      <a class="brand" href="#top"><span class="brand-mark" aria-hidden="true">松</span>まつど日和</a>
+      <small>松戸のまち歩きガイド · お出かけ前に各施設の公式情報をご確認ください。</small>
+      <a class="back-top" href="#top">ページの先頭へ ↑</a>
+    </div>
+  </footer>
+</body>
+</html>
